@@ -1,15 +1,16 @@
 class MyFavoritesController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity
 
     def index
         my_favorite = MyFavorite.all
-        render json: my_favorite
+        render json: my_favorite, status: :ok
     end
 
     def show
         my_favorite = find_by_id
         if my_favorite
-        render json: my_favorite
+        render json: my_favorite, status: :ok
         else
            render_not_found_response
         end
@@ -41,6 +42,10 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def fav_params
         params.permit(:title, :category, :description, :image_url)
+    end
+
+    def unprocessable_entity(exception)
+        render json: {error: exception.record.errors.full_messages}, status: :unprocessable_entity
     end
 
 end
