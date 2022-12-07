@@ -32,7 +32,7 @@ export default function MyFavorites() {
             <div className="my-favs-header">
                 <h1>My Favorites</h1>
                 <CreateData 
-                cardInfo = {cardInfo}
+                cardData = {cardData}
                 />
             </div>
             <div className="cards--section">
