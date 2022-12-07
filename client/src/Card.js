@@ -1,7 +1,7 @@
 import React from "react"
 import EditData from "./EditData"
 
-export default function Card({id, image_url, title, category, description, cardData, setCardData}) {
+export default function Card({id, image_url, title, category, description, cardData, setCardData, handleUpdateItem}) {
     
     function handleDelete(id) {
         const newCardData = cardData.filter(lst => lst.id !== id)
@@ -29,6 +29,7 @@ export default function Card({id, image_url, title, category, description, cardD
                     category = {category}
                     description = {description}
                     image_url = {image_url}
+                    handleUpdateItem = {handleUpdateItem}
                 />
                 <button className="btn btn-primary red btn-danger" onClick={() => handleDelete(id)}>Delete</button>
             </div>
