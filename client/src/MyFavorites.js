@@ -8,7 +8,10 @@ export default function MyFavorites() {
     React.useEffect(() => {
         fetch('/my_favorites')
         .then(res => res.json())
-        .then(data => setCardData(data))
+        .then(data => {
+            console.log(data)
+           return (setCardData(data))
+        })
       }, [])
 
     console.log(cardData)
@@ -23,11 +26,13 @@ export default function MyFavorites() {
         )
     })
 
+
     return (
         <div className="my-favs">
             <div className="my-favs-header">
                 <h1>My Favorites</h1>
                 <CreateData 
+                cardInfo = {cardInfo}
                 />
             </div>
             <div className="cards--section">

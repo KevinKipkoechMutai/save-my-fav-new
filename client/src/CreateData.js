@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-export default function CreateData() {
+export default function CreateData({cardInfo}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -13,30 +13,24 @@ export default function CreateData() {
   const [description, setDescription] = React.useState("")
   const [image_url, setImageUrl] = React.useState("")
 
-  let handlePost = async (e) => {
-    e.preventDefault()
-    try {
-        let res = await fetch('/my_favorites', {
-            method: 'POST',
-            body: JSON.stringify({
-                title: title,
-                category: category,
-                description: description,
-                image_url: image_url
-            }),
-        })
-        let resJson = await res.json()
-        if (res.status === 200) {
-            setTitle("")
-            setCategory("")
-            setDescription("")
-            setImageUrl("")
-        }
-    } catch (err) {
-        console.log(err)
-    }
 
+  function handlePost(e) {
+    e.preventDefault()
+    fetch('/my_favorites', {
+      method: 'POST',
+      body: JSON.stringify({
+        title: title,
+        category: category,
+        description: description,
+        image_url: image_url
+      }),
+      header: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .then(data => console.log(data))
   }
+
 
   return (
     <>
@@ -56,7 +50,7 @@ export default function CreateData() {
                 </label>
                 </div>
                 <div className="md:w-2/3">
-                <input onChange={(e) => setTitle(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="title" type="text" value={title}/>
+                <input onChange={(e) => setTitle(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="title" type="text" value={cardInfo.title} name="title" required/>
                 </div>
             </div>
             <div className="md:flex md:items-center mb-6">
@@ -66,7 +60,7 @@ export default function CreateData() {
                 </label>
                 </div>
                 <div className="md:w-2/3">
-                <input onChange={(e) => setCategory(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="category" type="text" value={category}/>
+                <input onChange={(e) => setCategory(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="category" type="text" value={cardInfo.category} name="category" required/>
                 </div>
             </div>
             <div className="md:flex md:items-center mb-6">
@@ -76,7 +70,7 @@ export default function CreateData() {
                 </label>
                 </div>
                 <div className="md:w-2/3">
-                <input onChange={(e) => setDescription(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="description" type="text" value={description}/>
+                <input onChange={(e) => setDescription(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="description" type="text" value={cardInfo.description} name="category" required/>
                 </div>
             </div>
             <div className="md:flex md:items-center mb-6">
@@ -86,7 +80,7 @@ export default function CreateData() {
                 </label>
                 </div>
                 <div className="md:w-2/3">
-                <input onChange={(e) => setImageUrl(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="image_url" type="text" value={image_url}/>
+                <input onChange={(e) => setImageUrl(e.target.value)} className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="image_url" type="text" value={cardInfo.image_url} name="image_url" required/>
                 </div>
             </div>
           </form>
