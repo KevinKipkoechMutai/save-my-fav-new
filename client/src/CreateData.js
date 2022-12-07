@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-export default function CreateData({cardData}) {
+export default function CreateData() {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -25,7 +25,8 @@ export default function CreateData({cardData}) {
         image_url: image_url
       }),
       header: {
-        'Content-Type': 'application/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       }
     }).then(res => res.json())
     .then(data => console.log(data))
