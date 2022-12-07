@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-export default function CreateData() {
+export default function CreateData({onAddItem}) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -16,20 +16,21 @@ export default function CreateData() {
 
   function handlePost(e) {
     e.preventDefault()
+    const formData = {
+      title: title,
+      category: category,
+      description: description,
+      image_url: image_url
+    }
     fetch('/my_favorites', {
       method: 'POST',
-      body: JSON.stringify({
-        title: title,
-        category: category,
-        description: description,
-        image_url: image_url
-      }),
-      header: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      }
-    }).then(res => res.json())
-    .then(data => console.log(data))
+      headers: {
+        'Content_Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+    .then(res => res.json())
+    .then(newItem => onAddItem(newItem))
   }
 
 
@@ -92,13 +93,13 @@ export default function CreateData() {
                 } className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="image_url" type="text" value={image_url} name="image_url" required/>
                 </div>
             </div>
+            <button className='btn btn-primary' type='submit' form='editmodal' onClick={handlePost}>Create</button>
           </form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <button className='btn btn-primary' type='submit' form='editmodal'>Create</button>
         </Modal.Footer>
       </Modal>
     </>
