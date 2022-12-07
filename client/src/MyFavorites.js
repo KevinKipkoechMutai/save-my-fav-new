@@ -13,6 +13,21 @@ export default function MyFavorites() {
            return (setCardData(data))
         })
       }, [])
+    
+    function handleAddItem(newItem) {
+        setCardData([...cardData, newItem])
+    }
+
+    function handleUpdateItem(updatedItem) {
+        const updatedItems = cardData.map((item) => {
+            if (item.id === updatedItem.id) {
+                return updatedItem
+            } else {
+                return item
+            }
+        })
+        setCardData(updatedItems)
+    }
 
     console.log(cardData)
     const cardInfo = Array.from(cardData).map((item) => {
@@ -22,9 +37,11 @@ export default function MyFavorites() {
                 {...item}
                 cardData = {cardData}
                 setCardData = {setCardData}
+                handleUpdateItem = {handleUpdateItem}
             />
         )
     })
+
 
 
     return (
@@ -32,7 +49,7 @@ export default function MyFavorites() {
             <div className="my-favs-header">
                 <h1>My Favorites</h1>
                 <CreateData 
-                
+                    onAddItem= {handleAddItem}
                 />
             </div>
             <div className="cards--section">
