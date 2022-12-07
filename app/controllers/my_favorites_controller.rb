@@ -8,7 +8,11 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
     def show
         my_favorite = find_by_id
+        if my_favorite
         render json: my_favorite
+        else
+           render_not_found_response
+        end
     end
 
     def create
@@ -31,7 +35,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
         MyFavorite.find_by(id: params[:id])
     end
 
-    def render_not_found_response(exception)
+    def render_not_found_response
         render json: {error: "Not found"}, status: :not_found
     end
 
