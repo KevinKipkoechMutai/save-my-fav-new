@@ -1,24 +1,17 @@
-# README
+# SaveMyFavs
+This is a rails-react application with CRUD functions and user authentication
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Technologies
+- ReactJS
+- Ruby on Rails
+- BootStrap CSS
+- Tailwind CSS
+- JavaScript
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
+## Screenshot
 
-* Configuration
+![screenshot](./Screenshot%20from%202022-12-08%2012-05-08.png)
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
