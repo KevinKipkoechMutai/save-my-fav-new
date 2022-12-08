@@ -25,6 +25,7 @@ export default function CreateData({onAddItem}) {
     fetch('/my_favorites', {
       method: 'POST',
       headers: {
+        'Accept': 'application/json',
         'Content_Type': 'application/json',
       },
       body: JSON.stringify(formData),
