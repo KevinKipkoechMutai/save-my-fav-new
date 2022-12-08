@@ -13,6 +13,8 @@ https://github.com/KevinKipkoechMutai/save-my-fav-backend
 
 CRUD functions: DELETE, READ, CREATE, UPDATE. PS: The last two are not yet 100% done (95% for DELETE and 50% for UPDATE) due to time consumed trying to deploy.
 
+ISSUE: User authentication failed on deployment. Working to resolve this ASAP.
+
 ## Technologies
 - ReactJS
 - Ruby on Rails
