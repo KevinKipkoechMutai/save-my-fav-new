@@ -6,7 +6,10 @@ This was originally a monolith project but due to deployment complications, I re
 
 https://github.com/KevinKipkoechMutai/save-my-fav-frontend 
 
-Link to the backend: 
+New backend repo: 
+
+https://github.com/KevinKipkoechMutai/save-my-fav-backend
+
 
 CRUD functions: DELETE, READ, CREATE, UPDATE. PS: The last two are not yet 100% done (95% for DELETE and 50% for UPDATE) due to time consumed trying to deploy.
 
