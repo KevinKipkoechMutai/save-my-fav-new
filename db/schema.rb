@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_07_141210) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_08_024812) do
   create_table "my_favorites", force: :cascade do |t|
     t.string "title"
     t.string "category"
     t.string "description"
     t.string "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
+    t.string "bio"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
