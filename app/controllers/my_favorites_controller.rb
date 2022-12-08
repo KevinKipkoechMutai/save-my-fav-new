@@ -1,6 +1,7 @@
 class MyFavoritesController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity
+skip_before_action :authorize, only: [:index]
 
     def index
         my_favorite = MyFavorite.all
