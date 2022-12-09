@@ -12,7 +12,7 @@ Backend deploy link:
 https://my-backend-production-cc33.up.railway.app/my_favorites
 
 Frontend working with a mock rest API: 
-https://dancing-sprite-94b109.netlify.app/
+https://clinquant-crostata-391c32.netlify.app/
 
 
 CRUD functions: DELETE, READ, CREATE, UPDATE. PS: The last two are not yet 100% done (95% for DELETE and 50% for UPDATE) due to time consumed trying to deploy.
