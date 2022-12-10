@@ -16,7 +16,7 @@ Frontend working with a mock rest API:
 https://clinquant-crostata-391c32.netlify.app/
 
 
-CRUD functions: DELETE, READ, CREATE, UPDATE. PS: The last two are not yet 100% done (95% for DELETE and 50% for UPDATE) due to time consumed trying to deploy.
+CRUD functions: DELETE, READ, CREATE, UPDATE. PS: Still working on update function (PATCH) complications.
 
 ISSUE: User authentication failed on deployment. Working to resolve this ASAP.
 
